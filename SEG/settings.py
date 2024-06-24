@@ -25,7 +25,7 @@ SECRET_KEY = 'x65d-h7p9&-=z!w2+t898lt*-q@t!g4(ss1-tav$jd67saj$98'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 APPEND_SLASH = False
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['3.6.130.204']
 
 
 INSTALLED_APPS = [
