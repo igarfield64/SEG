@@ -25,6 +25,7 @@ SECRET_KEY = 'x65d-h7p9&-=z!w2+t898lt*-q@t!g4(ss1-tav$jd67saj$98'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 APPEND_SLASH = False
+
 ALLOWED_HOSTS = ['3.6.130.204']
 
 
@@ -77,10 +78,11 @@ WSGI_APPLICATION = 'SEG.wsgi.application'
 #STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 #MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
-STATIC_URL = '/static/'
+
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'home/static'),
@@ -88,6 +90,7 @@ STATICFILES_DIRS = [
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 ]
 
 
