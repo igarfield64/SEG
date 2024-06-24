@@ -1,0 +1,22 @@
+
+{% extends "base.html" %}
+{%load static%}
+
+
+
+{%block content%}
+
+ <!---form starts here-->
+
+ <div class="container">
+    <h2>Import Contractors</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="csv_file" class="form-label">Upload CSV File:</label>
+            <input type="file" name="csv_file" accept=".csv" class="form-control" id="csv_file">
+        </div>
+        <button type="submit" class="btn btn-primary">Import</button>
+    </form>
+</div>
+{%endblock%}

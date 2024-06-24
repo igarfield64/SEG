@@ -1,0 +1,35 @@
+<!-- login.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+</head>
+<body>
+
+  <div class="container">
+    <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo">
+    <h2>Login</h2>
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <label for="id_username">Username:</label>
+        {{ form.username }}
+        
+        <!-- Password Input -->
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" id="id_password" required>
+        
+        {% if form.errors %}
+            <p class="error-message">{{ form.errors }}</p>
+        {% endif %}
+        <button type="submit">Login</button>
+    </form>
+  </div>
+
+</body>
+</html>

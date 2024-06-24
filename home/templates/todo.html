@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Modal for Todo Form -->
+<div class="modal fade" id="todoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Todo Form</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_task" class="form-label">Task</label>
+                        {{ form.task }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_status" class="form-label">Status</label>
+                        {{ form.status }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_description" class="form-label">Description</label>
+                        {{ form.description }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_assigned_to" class="form-label">Assigned To</label>
+                        {{ form.assigned_to }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_created_by" class="form-label">Created By</label>
+                        {{ form.created_by }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_added_on" class="form-label">Added On</label>
+                        {{ form.added_on }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_comm_id" class="form-label">Comm ID</label>
+                        {{ form.comm_id }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button to open Todo Form modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#todoModal">
+    <i class="bi bi-check2-square"></i> ToDo
+</button>
+{% endblock %}
+
+{% block scripts %}
+<!-- Bootstrap JavaScript -->
+<script src="{% static 'js/bootstrap.bundle.js' %}" type="text/javascript"></script>
+{% endblock %}

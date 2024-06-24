@@ -1,0 +1,67 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SEG Comms</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font/bootstrap-icons.css' %}" rel="stylesheet">
+    <script src="{% static 'js/bootstrap.bundle.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery-3.7.1.min.js' %}" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+     <div class="container-fluid bg-light">
+         <div class="row border-bottom">
+         <div class="col-2 bg-body-tertiary p-4 ">
+            
+            <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo">
+         </div>
+         <div class="col-9 p-4"></div> 
+        <div class="col-1 float-end">  
+          <form id="logout-form" action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-info mt-4">
+              <i class="bi bi-box-arrow-in-right"></i> Log Out
+            </button>
+          </form>
+        </div>
+        
+         </div> <!--row--> 
+          <div class="row">      
+         <div class="col-2 bg-dark-subtle p-4 border-end">
+            <ul class="nav flex-column">
+              <li class="nav-item border-bottom btn btn-primary text-white mb-4">
+                <a class="nav-link text-white" aria-current="page" href="{%url 'form'%}"><i class="bi bi-telephone-plus"></i> New Call</a>
+              </li>
+              <li class="nav-item border-bottom btn btn-primary text-white mb-4">
+                <a class="nav-link text-white" href="{%url 'form'%}"><i class="bi bi-chat-dots"></i> New Text</a>
+              </li>
+              <li class="nav-item border-bottom btn btn-primary text-white mb-4">
+                <a class="nav-link text-white" href="{%url 'main_report'%}"><i class="bi bi-clipboard-check"></i> Call Report</a>
+              </li> 
+               <li class="nav-item border-bottom btn btn-primary text-white mb-4">
+                <a class="nav-link text-white" href="#"><i class="bi bi-clipboard-check"></i> Text Report</a>
+              </li> 
+              <li class="nav-item border-bottom btn btn-primary text-white mb-4">
+                <a class="nav-link text-white" href="#" data-toggle = "modal" data-target = "#todoModal"><i class="bi bi-check2-square"></i> ToDo</a>
+              </li>
+               <li class="nav-item border-bottom btn btn-primary text-white mb-4">
+                <a class="nav-link text-white" href="#"><i class="bi bi-journal-text"></i> Library</a>
+              </li>  
+              
+            </ul>
+         </div>
+         <div class="col-10 p-4 bg-white">
+          {% block content%}{%endblock%}
+          {% block scripts %}{% endblock %}
+         </div>
+         </div> <!--row-->
+         <!--footer-->
+           <div class="row border-top p-4 bg-body-tertiary" > </div>      <!--footer-->       
+     </div><!--outer container-fluid-->
+    
+
+  </body>
+</html>

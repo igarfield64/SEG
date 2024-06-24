@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Review</h2>
+    <h3>Search to Add</h3>
+    <form method="POST" class="my-4">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-3 mb-2">
+                <input type="text" name="first_name" class="form-control" placeholder="First Name">
+            </div>
+            <div class="col-md-3 mb-2">
+                <input type="text" name="last_name" class="form-control" placeholder="Last Name">
+            </div>
+            <div class="col-md-3 mb-2">
+                <input type="text" name="badge" class="form-control" placeholder="Badge">
+            </div>
+            <div class="col-md-3 mb-2">
+                <input type="text" name="phone" class="form-control" placeholder="Phone">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </form>
+    {% if filtered_contractors %}
+    <h3>Filtered Contractors</h3>
+    <form method="POST" id="add-selected-form" class="my-4">
+        {% csrf_token %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Badge</th>
+                    <th>Created By</th>
+                    <th>Created On</th>
+                    <th>Selection</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contractor in filtered_contractors %}
+                <tr>
+                    <td>{{ contractor.first_name }}</td>
+                    <td>{{ contractor.last_name }}</td>
+                    <td>{{ contractor.phone }}</td>
+                    <td>{{ contractor.email }}</td>
+                    <td>{{ contractor.badge }}</td>
+                    <td>{{ contractor.created_by }}</td>
+                    <td>{{ contractor.created_on }}</td>
+                   <!--<td><input type="checkbox" name="search_select" value="{{ contractor|join:',' }}"></td>-->
+                   <td>
+                    <a href="#" class="selectContractor btn btn-small btn-primary">Select</a>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      
+    </form>
+    {% endif %}
+    
+    <h3>Review Contractors for Comms</h3>
+    <table class="table" id="tblFinal">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Badge</th>
+                <th>Created By</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contractor in review_list %}
+            <tr>
+                <td>{{ contractor.0 }}</td>
+                <td>{{ contractor.1 }}</td>
+                <td>{{ contractor.2 }}</td>
+                <td>{{ contractor.3 }}</td>
+                <td>{{ contractor.4 }}</td>
+                <td>{{ contractor.5 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% block scripts %}
+
+<script type="text/javascript"> alert("Hello");
+    $(document).ready(function() {
+        console.log("jQuery is ready!");
+    
+        $(".selectContractor").click(function(event){
+            event.preventDefault();
+            var tr = $(this).closest("tr").clone();
+            $(tr).appendTo("#tblFinal");
+            console.log("Row added to the final table.");
+        });
+    });
+</script>
+{% endblock %}
+{% endblock %}

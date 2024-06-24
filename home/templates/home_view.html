@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!---form starts here-->
+
+<div class="container">
+  <h2>Communications Form</h2>
+  <form method="post" enctype="multipart/form-data" class="row g-3">
+    {% csrf_token %}
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="id_comm_class" class="form-label">Comm Class:</label>
+        {{ form.comm_class }}
+      </div>
+      <div class="mb-3">
+        <label for="id_label" class="form-label">Label:</label>
+        {{ form.label }}
+      </000>
+      <div class="mb-3">
+        <label for="id_service_type" class="form-label">Service Type:</label>
+        {{ form.service_type }}
+      </div>
+      <div class="mb-3">
+        <label for="id_comm_type" class="form-label">Comm Type:</label>
+        {{ form.comm_type }}
+      </div>
+      <div class="mb-3">
+        <label for="id_message" class="form-label">Message:</label>
+        {{ form.message }}
+      </div>
+      <div class="mb-3">
+        <label for="id_created_by" class="form-label">Created By:</label>
+        {{ form.created_by }}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="id_created_on" class="form-label">Created On:</label>
+        {{ form.created_on }}
+      </div>
+      <div class="mb-3">
+        <label for="id_notes" class="form-label">Notes:</label>
+        {{ form.notes }}
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="id_is_parent" name="is_parent">
+        <label class="form-check-label" for="id_is_parent">Is Parent:</label>
+      </div>
+      <div class="mb-3">
+        <label for="id_parent_id" class="form-label">Parent ID:</label>
+        {{ form.parent_id }}
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

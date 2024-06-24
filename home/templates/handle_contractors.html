@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Imported Contractors</h2>
+    <h3>Mismatched Contractors</h3>
+    <h4>Select Contractors to Add to Conversation</h4>
+    <form method="POST" action="{% url 'review_contractors' %}">
+        {% csrf_token %}
+    <table class="table">
+        <thead>
+            <tr>
+          
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Badge</th>
+                <th>Created By</th>
+                <th>Selection</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for contractor in mismatched_contractors %}
+            <tr style="color: red;">
+                <td>{{ contractor.0 }}</td>
+                <td>{{ contractor.1 }}</td>
+                <td>{{ contractor.2 }}</td>
+                <td>{{ contractor.3 }}</td>
+                <td>{{ contractor.4 }}</td>
+                <td>{{ contractor.5 }}</td>
+                <td>{{ contractor.6 }}</td>
+              
+                <td><input type="checkbox" name="selected_contractors" value="{{ contractor|join:',' }}"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Matched Contractors</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+    
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Badge</th>
+                <th>Created By</th>
+       
+            </tr>
+        </thead>
+        <tbody>
+            {% for contractor in existing_contractors %}
+            <tr>
+                <td>{{ contractor.0 }}</td>
+                <td>{{ contractor.1 }}</td>
+                <td>{{ contractor.2 }}</td>
+                <td>{{ contractor.3 }}</td>
+                <td>{{ contractor.4 }}</td>
+                <td>{{ contractor.5 }}</td>
+                <td>{{ contractor.6 }}</td>
+        
+            
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Add Selected Contractors</button>
+    </div>
+</form>
+</div>
+{% endblock %}
