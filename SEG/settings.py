@@ -26,8 +26,9 @@ SECRET_KEY = 'x65d-h7p9&-=z!w2+t898lt*-q@t!g4(ss1-tav$jd67saj$98'
 DEBUG = True
 APPEND_SLASH = False
 
-ALLOWED_HOSTS = ['3.6.130.204']
-CSRF_TRUSTED_ORIGINS = ['3.6.130.204']
+ALLOWED_HOSTS = ['3.6.130.204','127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['http://3.6.130.204']
+
 
 
 INSTALLED_APPS = [
@@ -101,7 +102,7 @@ STATICFILES_FINDERS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'seg_comms', 
+        'NAME': 'seg-comms', 
         'USER': 'admin',
         'PASSWORD': 'adi1020123',
         'HOST': '127.0.0.1', 
