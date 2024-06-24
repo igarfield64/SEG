@@ -107,7 +107,7 @@ STATICFILES_FINDERS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test', 
+        'NAME': 'seg_comms', 
         'USER': 'admin',
         'PASSWORD': 'adi1020123',
         'HOST': '127.0.0.1', 
